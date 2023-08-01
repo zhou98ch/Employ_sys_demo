@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="em.domain.Department" table="department">
+		<id name="did" column="did">
+    				<generator class="native"></generator>
+    	</id>
+    	<property name="dname" column="dname" length="20"></property>
+    	<property name="dintro" column="dintro" length="255"></property>
+    	
+    	<!-- relation mapping -->
+		<set name="employees" cascade="delete" inverse="true">
+    		<key column="dno"></key> 
+			<one-to-many class="em.domain.Employee"/>
+    	</set>
+	</class>
+	
+	
+</hibernate-mapping>
